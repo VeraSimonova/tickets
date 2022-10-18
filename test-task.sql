@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 17 2022 г., 12:36
+-- Время создания: Окт 18 2022 г., 12:26
 -- Версия сервера: 10.4.24-MariaDB
 -- Версия PHP: 8.1.6
 
@@ -57,7 +57,57 @@ CREATE TABLE `barcode_tickets` (
 
 INSERT INTO `barcode_tickets` (`barcode_id`, `tickets_id`) VALUES
 (1, 1),
-(2, 1);
+(2, 1),
+(2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `from_a_to_b`
+--
+
+CREATE TABLE `from_a_to_b` (
+  `id` int(11) NOT NULL,
+  `dateTime` datetime NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `from_a_to_b`
+--
+
+INSERT INTO `from_a_to_b` (`id`, `dateTime`, `price`) VALUES
+(1, '2021-08-21 18:00:00', 700),
+(2, '2021-08-21 18:30:00', 700),
+(3, '2021-08-21 18:45:00', 700),
+(4, '2021-08-21 19:00:00', 700),
+(5, '2021-08-21 19:15:00', 700),
+(6, '2021-08-21 21:00:00', 700);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `from_b_to_a`
+--
+
+CREATE TABLE `from_b_to_a` (
+  `id` int(11) NOT NULL,
+  `dateTime` datetime NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `from_b_to_a`
+--
+
+INSERT INTO `from_b_to_a` (`id`, `dateTime`, `price`) VALUES
+(1, '2021-08-21 18:30:00', 700),
+(2, '2021-08-21 18:45:00', 700),
+(3, '2021-08-21 19:00:00', 700),
+(4, '2021-08-21 19:15:00', 700),
+(5, '2021-08-21 19:35:00', 700),
+(6, '2021-08-21 21:50:00', 700),
+(7, '2021-08-21 21:55:00', 700);
 
 -- --------------------------------------------------------
 
@@ -151,6 +201,18 @@ ALTER TABLE `barcode_tickets`
   ADD KEY `tickets_id` (`tickets_id`);
 
 --
+-- Индексы таблицы `from_a_to_b`
+--
+ALTER TABLE `from_a_to_b`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `from_b_to_a`
+--
+ALTER TABLE `from_b_to_a`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `migrations`
 --
 ALTER TABLE `migrations`
@@ -178,6 +240,18 @@ ALTER TABLE `ticket_types`
 --
 ALTER TABLE `barcode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `from_a_to_b`
+--
+ALTER TABLE `from_a_to_b`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT для таблицы `from_b_to_a`
+--
+ALTER TABLE `from_b_to_a`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `migrations`
